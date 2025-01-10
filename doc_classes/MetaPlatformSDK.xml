@@ -5,42 +5,6 @@
 	</brief_description>
 	<description>
 		The [b]MetaPlatformSDK[/b] singleton is your main entry-point for working with Meta's Platform SDK.
-		Before you can use the Platform SDK, you'll need to:
-		1. [url=https://developer.oculus.com/sign-up/]Create a developer account[/url] for Meta Quest.
-		2. Create an app within the Meta Quest [url=https://developer.oculus.com/manage/]Developer Dashboard[/url].
-		3. Visit the "API" tab within the developer dashboard for your app, and make note of your "App ID" - you'll need this to initialize the Platform SDK.
-		4. Make a release build of your application, using the real "Unique Name" and release keystore. At this point, your application probably doesn't do much, which is fine.
-		5. Upload this build using the [url=https://developer.oculus.com/meta-quest-developer-hub/]Meta Quest Developer Hub[/url] to the ALPHA channel.
-		6. Complete a [url=https://developer.oculus.com/resources/publish-data-use/]Data Use Checkup[/url] (DUC), including all the features of the Platform SDK you intend to use. You won't have access to any features you don't include in your DUC.
-		7. Wait for your DUC to be approved.
-		After that process is complete, you'll be able to use the Platform SDK, for example:
-		[codeblock]
-		        func setup_meta_platform_sdk():
-		            var result: MetaPlatformSDK_Message
-
-		            # Replace "1234" with your App ID.
-		            result = await MetaPlatformSDK.initialize_platform_async("1234").completed
-		            if result.is_error():
-		                print("Unable to initialize the platform SDK: ", result.error)
-		                return
-
-		            # Check that the user owns this app and is entitled to use it.
-		            result = await MetaPlatformSDK.entitlement_get_is_viewer_entitled_async().completed
-		            if result.is_error():
-		                print("The user isn't entitled: ", result.error)
-		                return
-
-		            # Get the list of the user's friends who also own this app.
-		            # NOTE: This will only work if you requested access to "Friends" on your DUC (see earlier instructions).
-		            result = await MetaPlatformSDK.user_get_logged_in_user_friends_async().completed
-		            if result.is_error():
-		                print("Unable to get friends: ", result.error)
-		                return
-
-		            print("My friends:")
-		            for user in result.data:
-		                print("- ", user)
-		[/codeblock]
 		Be sure to initialize the Platform SDK using [method initialize_platform_async] or [method initialize_platform] before calling any other methods.
 	</description>
 	<tutorials>
