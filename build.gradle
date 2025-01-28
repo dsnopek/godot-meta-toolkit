@@ -79,11 +79,11 @@ task buildSconsArtifacts {
         // Build the GDExtension library for Android.
         tasks.create(name: "buildGodotMetaToolkitAndroidArm64Debug", type: Exec) {
             executable sconsExecutableFile.absolutePath
-            args "--directory=.", "platform=android", "target=template_debug", "arch=arm64", "build_profile=thirdparty/godot_cpp_build_profile/build_profile.json"
+            args "--directory=.", "platform=android", "target=template_debug", "arch=arm64", "custom_api_file=thirdparty/godot_cpp_gdextension_api/extension_api.json", "build_profile=thirdparty/godot_cpp_build_profile/build_profile.json"
         }
         tasks.create(name: "buildGodotMetaToolkitAndroidArm64Release", type: Exec) {
             executable sconsExecutableFile.absolutePath
-            args "--directory=.", "platform=android", "target=template_release", "arch=arm64", "build_profile=thirdparty/godot_cpp_build_profile/build_profile.json"
+            args "--directory=.", "platform=android", "target=template_release", "arch=arm64", "custom_api_file=thirdparty/godot_cpp_gdextension_api/extension_api.json", "build_profile=thirdparty/godot_cpp_build_profile/build_profile.json"
         }
 
         dependsOn 'buildGodotMetaToolkitAndroidArm64Debug'
@@ -92,11 +92,11 @@ task buildSconsArtifacts {
         // Build the GDExtension library for desktop.
         tasks.create(name: "buildGodotMetaToolkitDesktopDebug", type: Exec) {
             executable sconsExecutableFile.absolutePath
-            args "--directory=.", "target=template_debug", "build_profile=thirdparty/godot_cpp_build_profile/build_profile.json"
+            args "--directory=.", "target=template_debug", "custom_api_file=thirdparty/godot_cpp_gdextension_api/extension_api.json", "build_profile=thirdparty/godot_cpp_build_profile/build_profile.json"
         }
         tasks.create(name: "buildGodotMetaToolkitDesktopRelease", type: Exec) {
             executable sconsExecutableFile.absolutePath
-            args "--directory=.", "target=template_release", "build_profile=thirdparty/godot_cpp_build_profile/build_profile.json"
+            args "--directory=.", "target=template_release", "custom_api_file=thirdparty/godot_cpp_gdextension_api/extension_api.json", "build_profile=thirdparty/godot_cpp_build_profile/build_profile.json"
         }
 
         dependsOn 'buildGodotMetaToolkitDesktopDebug'
